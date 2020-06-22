@@ -1,0 +1,27 @@
+/* eslint-disable no-unused-vars */
+let p5;
+
+var w = window.innerWidth / 2;
+var h = window.innerHeight / 2;
+//var canvas;
+let dotSize;
+
+export function main(_p5) {
+  p5 = _p5;
+
+  p5.setup = _ => {
+    var canvas = p5.createCanvas(w, h);
+    canvas.parent("p5CanvasSettings");
+    p5.background(150);
+    dotSize = p5.slider(0, 255, 100);
+    dotSize.position(10, 10);
+    //dotSize.style("width", "80px");
+  };
+
+  p5.draw = _ => {
+    let val = dotSize.value();
+    p5.background(val);
+    p5.ellipse(10, 10, 15, 15);
+    p5.fill(255);
+  };
+}
